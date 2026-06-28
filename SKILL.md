@@ -56,6 +56,9 @@ plausible intents.
 - **Error / CI log** → likely: diagnose and fix the failure.
 - **Email / message thread** → likely: summarize, draft a reply, or extract an action.
 - **Chat snippet** → likely: continue a line of thought, or act on a decision in it.
+  *Copy-pasted threads lose attribution: a trailing fragment before a compose-box
+  placeholder (`Reply…`, `Message #channel`, `Type a message`) is the operator's OWN
+  unsent draft, not the last poster's words. Resolve who-said-what before acting on it.*
 - **Screenshot** → likely: reproduce/fix what's shown, or read state off it.
 - **Spec fragment / design note** → likely: implement, critique, or expand it.
 - **Vague nudge / half-thought** → lowest confidence; lean toward beat 4.
@@ -99,6 +102,17 @@ Pick one, or tell me I'm missing it.
 This is `know-what-you-dont-know` applied to the *task itself*. An honest "two reads,
 which?" beats a smooth guess that sends the whole turn down the wrong path. Do **not**
 pad to a third read to look thorough — two real reads, or one, is fine.
+
+**When the low confidence traces to *lossy evidence* — not genuine ambiguity** — a
+mangled chat paste, a blurry screenshot, a truncated log — the best output is often a
+request for a **higher-fidelity artifact**, not a disambiguating question: "send that as
+a screenshot", "paste the full tail", "can you zoom in?". A screenshot of a chat recovers
+the alignment / compose-box / speaker structure that text-copy destroys, resolving every
+attribution boundary at once. Fixing the input beats inferring across garbage (GIGO).
+**Gate it on task-changing loss:** a clean-enough paste, or one resolvable from a tell
+(compose placeholder → operator's own draft), does NOT earn a round-trip — proceed on a
+stated assumption and let the operator correct. ykwtd exists to *save* a round-trip; spend
+one only when the loss actually changes what you'd do.
 
 ## After intent is fixed
 
