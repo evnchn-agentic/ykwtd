@@ -29,7 +29,11 @@ half-thought with no imperative and no explicit ask, where the agent must first 
 3. **Tiered gate** — reversible→act, irreversible/outward→propose-and-wait. Boundary is
    reversibility+reach, not effort.
 4. **Low-confidence escape hatch** — output the ambiguity ("two reads, which?"), never a
-   confident guess. No padding to a third read.
+   confident guess. No padding to a third read. When the low confidence traces to *lossy
+   evidence* (a mangled chat paste, a blurry screenshot, a truncated log) rather than
+   genuine task ambiguity, prefer requesting a higher-fidelity artifact ("send a
+   screenshot") over a disambiguating question — fix the input, not the inference; gated on
+   task-changing loss so it doesn't reintroduce the round-trip the skill exists to save.
 
 Then **hand off** to the real task's skill. ykwtd is a router, not an executor.
 
