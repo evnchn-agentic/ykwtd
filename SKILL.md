@@ -88,6 +88,12 @@ catches confident-but-wrong inferences before they cost anything.
 > The line between the tiers is *reversibility and reach*, not effort. A large but
 > fully-undoable refactor is tier-1; a one-character outward post is tier-2.
 
+**Before you gate a tier-2 action, try to downgrade it.** This 2-tier split is the fast
+version; when an action *looks* irreversible, the `hats-haircuts-tattoos` skill adds the
+middle "haircut" tier and — more importantly — the **downgrade move**: cheaply buy back
+reversibility (backup / snapshot / dry-run) so a tier-2 tattoo becomes a tier-1 hat and
+you can just act. Reach for it whenever this gate would otherwise stop you.
+
 ### 4. Low-confidence escape hatch
 If the read is genuinely ambiguous, the **correct output is the ambiguity**, not a
 confident guess:
