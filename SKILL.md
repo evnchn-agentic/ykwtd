@@ -61,7 +61,15 @@ plausible intents.
   unsent draft, not the last poster's words. Resolve who-said-what before acting on it.*
 - **Screenshot** → likely: reproduce/fix what's shown, or read state off it.
 - **Spec fragment / design note** → likely: implement, critique, or expand it.
+- **Voice memo / audio / mixed-media archive** (`.m4a` / `.opus` / a chat-export `.zip`) →
+  **transcribe first** (local Whisper; force the Cantonese language code `yue` when it
+  mis-detects as English — flag name varies by CLI, e.g. `whisper-cli -l yue`),
+  unzip and split text / audio / images, *then* classify the recovered content. The drop isn't
+  legible until transcribed.
 - **Vague nudge / half-thought** → lowest confidence; lean toward beat 4.
+
+A drop can be a **collection, not one item** — a whole inbox / milestone / PR-list
+("notifications-wide ykwtd"). Classify and digest *across* N; don't force one intent onto the set.
 
 ### 2. Infer intent + confidence (always, lightweight)
 Open with this block **every** run. It is short on purpose — the discipline is the
