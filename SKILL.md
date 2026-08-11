@@ -92,6 +92,13 @@ plausible intents.
 A drop can be a **collection, not one item** — a whole inbox / milestone / PR-list
 ("notifications-wide ykwtd"). Classify and digest *across* N; don't force one intent onto the set.
 
+**A collapsed drop is not a cheap drop.** A harness may render a long paste compactly — Claude Code
+(2.1.x) shows a `[Pasted text #N +M lines]` chip — but that is presentation: the full content is
+substituted back before the message is built, so the whole blob enters context and no display-side
+setting shortens it. Don't assume any harness digests a drop on your behalf. When a large drop is
+only partly relevant, ask for a **path instead of a paste**, then read it selectively or hand the
+file to a subagent — beat 4's higher-fidelity ask, on the cost axis rather than the fidelity axis.
+
 ### 2. Infer intent + confidence (always, lightweight)
 Open with this block **every** run. It is short on purpose — the discipline is the
 product, but it should cost three lines, not thirty:
