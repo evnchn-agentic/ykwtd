@@ -6,10 +6,13 @@ description: >-
   half-finished thought with no imperative verb and no explicit ask — and you
   must infer what the operator wants before acting. Fires explicitly (the user
   types /ykwtd or "you know what to do") AND reflexively whenever no-imperative
-  input arrives on its own. Its spine is anti-confabulation: surface the inferred
-  intent plus a confidence read, then act-or-gate by reversibility — never
-  silently guess-and-run. NOT for instruction-shaped requests ("do X", "fix Y",
-  "add Z") — those use the normal flow.
+  input arrives on its own — AND on an UNDERSPECIFIED imperative (a verb is
+  present but the deliverable/quality bar is not — especially affect/service
+  framings like "keep him entertained", "make her happy", "take care of it")
+  when the downstream work is outward or irreversible. Its spine is
+  anti-confabulation: surface the inferred intent plus a confidence read, then
+  act-or-gate by reversibility — never silently guess-and-run. NOT for
+  fully-specified requests ("do X", "fix Y", "add Z") — those use the normal flow.
 ---
 
 # ykwtd — "you know what to do"
@@ -27,17 +30,35 @@ the task, and your first job is to read it correctly without making one up.
 
 ## When this fires
 
-**Trigger boundary — both must hold:** the input has **no imperative verb** AND **no
-explicit ask**. That is what separates ykwtd from the normal flow and keeps it from
-firing on everything.
+**Trigger boundary — two gates, either one fires it:**
+
+- **Gate A (classic):** the input has **no imperative verb** AND **no explicit ask**.
+- **Gate B (underspecified imperative):** a verb IS present but names an *affect or
+  service state*, not a deliverable ("keep him entertained", "make her happy",
+  "take care of it", "keep the ball moving") — AND the work it spawns is **outward
+  or irreversible**. Reversible-and-inward terse imperatives stay normal-flow;
+  that is what keeps Gate B from firing on everything.
+
+Gate B exists because a frame-setting verb doesn't just under-specify — it *selects
+the task* at a layer below deliberation, and procedures outside the selected frame
+(review gates, quality bars) may never surface for consideration at all. Running the
+loop regenerates **goal + checker + pitfalls** into recent context, which is a
+targeted refresh of exactly the early-loaded instructions that attention decay and
+the frame would otherwise suppress (measured: adherence to distant instructions
+decays within ~8 turns; regeneration partially restores it). Empirical anchor:
+"keep him entertained and served" (2026-08-08, session 32dce382) spawned four
+outward posts in 7 minutes with every meta-gate silently skipped — the frame primed
+latency over rigor, and nothing re-armed the gates.
 
 | Input | Route |
 |---|---|
 | "fix this test" / "add a dark mode toggle" / "can you check the logs?" | **normal flow** — there is a stated task |
-| *(a pasted stack trace, no other words)* | **ykwtd** |
-| *(a forwarded email + "...")* | **ykwtd** |
-| *(screenshot of a failing UI)* | **ykwtd** |
-| "thoughts?" *attached to a diff* | **ykwtd** (an ask exists but no task — infer what kind of thoughts) |
+| *(a pasted stack trace, no other words)* | **ykwtd** (Gate A) |
+| *(a forwarded email + "...")* | **ykwtd** (Gate A) |
+| *(screenshot of a failing UI)* | **ykwtd** (Gate A) |
+| "thoughts?" *attached to a diff* | **ykwtd** (Gate A — an ask exists but no task) |
+| "keep him entertained" *(work will go outward: posts, PRs, emails)* | **ykwtd** (Gate B — surface the decoded intent AND the assumed quality bar, e.g. "reading this as: continue servicing X *with the same rigor gates as before*") |
+| "tidy this up" *(local file, reversible)* | **normal flow** — terse but inward + reversible |
 
 Two ways in:
 - **Explicit** — the user types `/ykwtd`, or "you know what to do", or hands you a
