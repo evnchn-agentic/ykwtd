@@ -18,6 +18,24 @@ confidence, and named the joke rather than inventing a task. The skill passed it
 test on its own origin story. That self-reference is why the link is preserved here: when
 the video eventually 404s, the name's meaning still survives in this text.
 
+## Hand over a path, not a paste
+
+A collapsed drop is not a cheap drop. Claude Code renders a long paste as a compact
+`[Pasted text #N +M lines]` chip, but that is presentation only — the full content is
+substituted back before the message is sent, so the whole blob enters the context window
+either way. Nothing summarises or truncates input on the way in, and no display-side
+setting shortens it.
+
+The agent cannot help you here, which is why this lives in the README and not in
+`SKILL.md`: by the time the skill fires the expansion has already happened, so the agent
+sees the full text and the tokens are already spent. There is no collapsed drop for it to
+handle. This is a habit on the dropping side — when a drop is large and only partly
+relevant, write it to a file and hand over the path. The agent then reads only what it
+needs, or gives the file to a subagent so the bulk never touches the main context.
+
+(Measured on Claude Code 2.1.x: collapse fires above 800 chars or 2 newlines; pastes over
+1024 chars are also cached to `~/.claude/paste-cache/` for 30 days.)
+
 ## The point this skill quietly makes
 
 You do **not** need fancy scaffolding to make a good skill.
